@@ -1,0 +1,19 @@
+{
+  "name": "ext-accessor",
+  "version": "0.0.1",
+  "description": "External Accessor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ganaraj P R",
+  "license": "MIT",
+  "dependencies": {
+    "ast-types": "^0.4.9",
+    "esprima": "^1.2.2",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}
