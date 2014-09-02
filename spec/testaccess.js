@@ -1,8 +1,30 @@
 var acc = require('../index.js');
 
-function testFn(){
+/*function testFn(){
     var node = NodeService.addNode($scope.state.selectedOption);
     while(j < n,n<x){ j++;}
+}*/
+
+function testFn(){
+    var node = NodeService.addNode($scope.state.selectedOption);
+    console.log(node.abc);
+    node.abc = console.log().a;
+
+    switch ( man().c.a() ){
+        default :
+            hello();
+            break;
+    }
+    node.properties;
+    $scope.a;
+    a;
+    b().a;
+    do {
+        this.terminate = true;
+        this.matter();
+    }
+    while(i<are);
+    $scope.state.selectedOption = "";
 }
 
 
