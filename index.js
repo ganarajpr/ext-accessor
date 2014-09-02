@@ -2,6 +2,7 @@ var esprima = require("esprima");
 var assert = require("assert");
 var types = require("ast-types");
 var h = require("./lib/helpers");
+var extdef = require("./lib/extdef");
 var n = types.namedTypes;
 
 
@@ -23,43 +24,17 @@ function parse(fnSource){
     return ast;
 }
 
-
-function storeIfExternal(path,collection){
-    var node = path.node;
-    var rootAccessor = h.getRootObject(node);
-    var rootAccessorScope = path.scope.lookup(rootAccessor);
-    if(rootAccessorScope && rootAccessorScope.isGlobal){
-        collection.push(h.getFullAccessorList(node).join("."));
-        return true;
-    }
-    return false;
-}
-
-
 function getExternals(ast){
     assert.ok(n.FunctionDeclaration.check(ast.body[0]));
-    var collection = [];
+    var externals;
     types.visit(ast,{
-        visitMemberExpression : function(path){
-            var stored = storeIfExternal(path,collection);
-                this.traverse(path);
-        },
-        visitIdentifier : function(path){
-            storeIfExternal(path,collection);
-            this.traverse(path);
-        },
-        visitThisExpression : function(path){
-            storeIfExternal(path,collection);
-            this.traverse(path);
-        },
-        visitCallExpression : function(path){
-            storeIfExternal(path,collection);
-            this.traverse(path);
+        visitFunctionDeclaration : function(path){
+            externals = extdef.find(path);
+            //dont go deeper
+            return false;
         }
-
     });
-    return collection;
-
+    return externals;
 }
 
 

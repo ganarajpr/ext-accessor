@@ -10,4 +10,4 @@ var code = testFn.toString();
 
 
 var accList = acc.getAccessors(code);
-console.log(accList);
+//console.log(accList);
