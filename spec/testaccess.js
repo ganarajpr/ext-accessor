@@ -19,6 +19,7 @@ function testFn(){
     $scope.a;
     a;
     b().a;
+    testFn();
     do {
         this.terminate = true;
         this.matter();
@@ -102,8 +103,8 @@ function a() {
 }
 
 
-var code = a.toString();
+var code = testFn.toString();
 
 
 var accList = acc.getAccessors(code);
-//console.log(accList);
+console.log(accList);

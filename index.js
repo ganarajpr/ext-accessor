@@ -28,7 +28,7 @@ function getExternals(ast){
     assert.ok(n.FunctionDeclaration.check(ast.body[0]));
     var externals;
     types.visit(ast,{
-        visitFunctionDeclaration : function(path){
+        visitProgram : function(path){
             externals = extdef.find(path);
             //dont go deeper
             return false;
