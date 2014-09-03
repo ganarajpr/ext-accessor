@@ -74,7 +74,12 @@ function a() {
                     var node = NodeService.addNode($scope.state.selectedOption);
                     console.log(node.abc);
                     node.abc = console.log().a;
-
+                    var m = {
+                        aasss : '',
+                        process : {
+                            bb : trouble.x.y
+                        }
+                    };
                     switch ( man().c.a() ){
                         default :
                             hello();
@@ -103,7 +108,7 @@ function a() {
 }
 
 
-var code = testFn.toString();
+var code = a.toString();
 
 
 var accList = acc.getAccessors(code);
