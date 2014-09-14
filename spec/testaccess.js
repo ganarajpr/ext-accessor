@@ -29,6 +29,34 @@ function testFn(){
 }
 
 
+function handleFirstFunction(parts){
+    "use strict";
+    var identifier;
+    var first = _.first(parts);
+    identifier = getFuncName(first);
+    prg.addVariable(identifier);
+    if(parts.length > 1){
+        var idassign = prg.getAssignment(identifier);
+        if(!idassign){
+            var newfe = new create.FunctionExpression();
+            prg.addAssignment(new create.Identifier(identifier),newfe);
+            addToFunction(newfe, _.rest(parts));
+        }
+        else{
+            if(idassign.right.type === "FunctionExpression"){
+                addToFunction(idassign.right, _.rest(parts));
+            }
+        }
+
+    }
+    else{
+        var funct = new create.FunctionExpression();
+        funct.addReturn(new create.Literal(1));
+        prg.addAssignment(new create.Identifier(identifier),funct);
+    }
+}
+
+
 function a() {
     angular.module("layout")
         .controller("OverlayController", [
@@ -108,7 +136,7 @@ function a() {
 }
 
 
-var code = a.toString();
+var code = handleFirstFunction.toString();
 
 
 var accList = acc.getAccessors(code);
