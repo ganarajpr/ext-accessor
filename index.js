@@ -24,16 +24,27 @@ function parse(fnSource){
     return ast;
 }
 
+
+//It knows / assumes :
+//      That ast has a property called body which is an array
+//      That there is an object called types which has a function called visit.
+//      What types.visit takes.
+//      That there is extdef which has a find function
+
 function getExternals(ast){
-    assert.ok(n.FunctionDeclaration.check(ast.body[0]));
-    var externals;
-    types.visit(ast,{
-        visitProgram : function(path){
-            externals = extdef.find(path);
-            //dont go deeper
-            return false;
-        }
-    });
+
+    var externals = [];
+
+    if( n.FunctionDeclaration.check(ast.body[0]) ){
+        types.visit(ast,{
+            visitFunction : function(path){
+                externals = extdef.find(path);
+                //dont go deeper
+                return false;
+            }
+        });
+    }
+
     return externals;
 }
 

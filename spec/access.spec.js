@@ -3,7 +3,7 @@ var acc = require('../index.js');
 
 describe("External Defs",function(){
     var code;
-    xdescribe("Simple member expressions",function(){
+    describe("Simple member expressions",function(){
 
         beforeEach(function(){
             function testFn(){
@@ -16,11 +16,11 @@ describe("External Defs",function(){
 
         it("should list Member Expressions", function(){
             var accList = acc.getAccessors(code);
-            expect(accList).toEqual(['NodeService.addNode()', '$scope.state.selectedOption', 'j','n','x']);
+            expect(accList).toEqual({ externals : ['NodeService.addNode()', '$scope.state.selectedOption', 'j','n','x'], args : [] });
         });
     });
 
-    xdescribe("Inside Loops and Switch statements",function(){
+    describe("Inside Loops and Switch statements",function(){
 
         beforeEach(function(){
             function testFn(){
@@ -37,7 +37,6 @@ describe("External Defs",function(){
                 $scope.a;
                 a;
                 b().a;
-                testFn();
                 do {
                     this.terminate = true;
                     this.matter();
@@ -51,14 +50,17 @@ describe("External Defs",function(){
 
         it("should list all externals", function(){
             var accList = acc.getAccessors(code);
-            expect(accList).toEqual([ 'NodeService.addNode()', '$scope.state.selectedOption',
-                'console.log()', 'console.log().a', 'man().c.a()', 'hello()', '$scope.a', 'a',
-                'b().a', 'this.terminate', 'this.matter()', 'i', 'are' ] );
+            expect(accList).toEqual({
+                externals : [ 'NodeService.addNode()', '$scope.state.selectedOption',
+                    'console.log()', 'console.log().a', 'man().c.a()', 'hello()', '$scope.a', 'a',
+                    'b().a', 'this.terminate', 'this.matter()', 'i', 'are' ],
+                args : []
+            });
         });
     });
 
 
-    xdescribe("Functions within functions",function(){
+    describe("Functions within functions",function(){
 
         beforeEach(function(){
 
@@ -144,11 +146,16 @@ describe("External Defs",function(){
 
         it("should list Externals", function(){
             var accList = acc.getAccessors(code);
-            expect(accList).toEqual([ 'angular.module().controller()', 'angular.module()', '$scope.controller()',
-                'm.q.x', 'nutan.$watch()', 'nutan.length', 'log()', 'tre.abc.log().log().a()',
-                'console.log()', 'j', 'n', 'x', 'console.log().a', 'trouble.x.y',
-                'man().c.a()', 'hello()', 'b().a', 'this.terminate',
-                'this.matter()', 'are' ]);
+            expect(accList).toEqual({
+                externals : [
+                                'angular.module().controller()', 'angular.module()', '$scope.controller()',
+                                'm.q.x', 'nutan.$watch()', 'nutan.length', 'log()', 'tre.abc.log().log().a()',
+                                'console.log()', 'j', 'n', 'x', 'console.log().a', 'trouble.x.y',
+                                'man().c.a()', 'hello()', 'b().a', 'this.terminate',
+                                'this.matter()', 'are'
+                ],
+                args : []
+            });
         });
     });
 
@@ -188,9 +195,11 @@ describe("External Defs",function(){
 
         it("should list Externals", function(){
             var accList = acc.getAccessors(code);
-            expect(accList).toEqual([ '_.first()', 'getFuncName()', 'prg.addVariable()', 'prg.getAssignment()',
+            expect(accList).toEqual({
+                externals : [ '_.first()', 'getFuncName()', 'prg.addVariable()', 'prg.getAssignment()',
                 'create.FunctionExpression()', 'prg.addAssignment()', 'create.Identifier()', 'addToFunction()',
-                '_.rest()', 'create.Literal()' ] );
+                '_.rest()', 'create.Literal()' ] ,
+                args : [ 'parts', 'parts.length' ] });
         });
     });
 
