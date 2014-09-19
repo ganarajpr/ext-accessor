@@ -137,8 +137,13 @@ function a() {
 }
 
 
-var code = handleFirstFunction.toString();
+function b(){
+    log();
+}
+
+
+var code = a.toString();
 
 
 var accList = acc.getAccessors(code);
-_.map(accList,console.log);
+console.log(accList.externals);

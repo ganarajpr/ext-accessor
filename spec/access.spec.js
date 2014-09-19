@@ -52,7 +52,7 @@ describe("External Defs",function(){
             var accList = acc.getAccessors(code);
             expect({externals : accList.externals , args : accList.args }).toEqual({
                 externals : [ 'NodeService.addNode()', '$scope.state.selectedOption',
-                    'console.log()', 'console.log().a', 'man().c.a()', 'hello()', '$scope.a', 'a',
+                    'console.log().a', 'man().c.a()', 'hello()', '$scope.a', 'a',
                     'b().a', 'this.terminate', 'this.matter()', 'i', 'are' ],
                 args : []
             });
@@ -150,7 +150,7 @@ describe("External Defs",function(){
                 externals : [
                                 'angular.module().controller()', 'angular.module()', '$scope.controller()',
                                 'm.q.x', 'nutan.$watch()', 'nutan.length', 'log()', 'tre.abc.log().log().a()',
-                                'console.log()', 'j', 'n', 'x', 'console.log().a', 'trouble.x.y',
+                                'j', 'n', 'x', 'console.log().a', 'trouble.x.y',
                                 'man().c.a()', 'hello()', 'b().a', 'this.terminate',
                                 'this.matter()', 'are'
                 ],

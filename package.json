@@ -11,7 +11,9 @@
   "dependencies": {
     "ast-types": "^0.4.9",
     "esprima": "^1.2.2",
-    "lodash": "^2.4.1"
+    "jsdom": "^0.2.19",
+    "lodash": "^2.4.1",
+    "verbal-expressions": "^0.1.2"
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5"
