@@ -147,13 +147,25 @@ describe("External Defs",function(){
         it("should list Externals", function(){
             var accList = acc.getAccessors(code);
             expect({externals : accList.externals , args : accList.args }).toEqual({
-                externals : [
-                                'angular.module().controller()', 'angular.module()', '$scope.controller()',
-                                'm.q.x', 'nutan.$watch()', 'nutan.length', 'log()', 'tre.abc.log().log().a()',
-                                'j', 'n', 'x', 'console.log().a', 'trouble.x.y',
-                                'man().c.a()', 'hello()', 'b().a', 'this.terminate',
-                                'this.matter()', 'are'
-                ],
+                externals :[ 'angular.module().controller()',
+                    'angular.module()',
+                    '$scope.controller()',
+                    'm.q.x',
+                    'nutan.$watch()',
+                    'nutan.length',
+                    'log()',
+                    'tre.abc.log().log().a()',
+                    'j',
+                    'n',
+                    'x',
+                    'console.log().a',
+                    'trouble.x.y',
+                    'man().c.a()',
+                    'hello()',
+                    'b().a',
+                    'this.terminate',
+                    'this.matter()',
+                    'are' ],
                 args : []
             });
         });

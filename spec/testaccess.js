@@ -136,12 +136,6 @@ function a() {
 
 }
 
-
-function b(){
-    log();
-}
-
-
 var code = a.toString();
 
 
