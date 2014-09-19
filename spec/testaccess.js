@@ -1,4 +1,5 @@
 var acc = require('../index.js');
+var _ = require('lodash');
 
 function fi(){
     var node = NodeService.addNode($scope.state.selectedOption);
@@ -140,4 +141,4 @@ var code = handleFirstFunction.toString();
 
 
 var accList = acc.getAccessors(code);
-console.log(accList);
+_.map(accList,console.log);

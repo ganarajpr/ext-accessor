@@ -16,7 +16,7 @@ describe("External Defs",function(){
 
         it("should list Member Expressions", function(){
             var accList = acc.getAccessors(code);
-            expect(accList).toEqual({ externals : ['NodeService.addNode()', '$scope.state.selectedOption', 'j','n','x'], args : [] });
+            expect({externals : accList.externals , args : accList.args }).toEqual({ externals : ['NodeService.addNode()', '$scope.state.selectedOption', 'j','n','x'], args : [] });
         });
     });
 
@@ -50,7 +50,7 @@ describe("External Defs",function(){
 
         it("should list all externals", function(){
             var accList = acc.getAccessors(code);
-            expect(accList).toEqual({
+            expect({externals : accList.externals , args : accList.args }).toEqual({
                 externals : [ 'NodeService.addNode()', '$scope.state.selectedOption',
                     'console.log()', 'console.log().a', 'man().c.a()', 'hello()', '$scope.a', 'a',
                     'b().a', 'this.terminate', 'this.matter()', 'i', 'are' ],
@@ -146,7 +146,7 @@ describe("External Defs",function(){
 
         it("should list Externals", function(){
             var accList = acc.getAccessors(code);
-            expect(accList).toEqual({
+            expect({externals : accList.externals , args : accList.args }).toEqual({
                 externals : [
                                 'angular.module().controller()', 'angular.module()', '$scope.controller()',
                                 'm.q.x', 'nutan.$watch()', 'nutan.length', 'log()', 'tre.abc.log().log().a()',
@@ -195,7 +195,7 @@ describe("External Defs",function(){
 
         it("should list Externals", function(){
             var accList = acc.getAccessors(code);
-            expect(accList).toEqual({
+            expect({externals : accList.externals , args : accList.args }).toEqual({
                 externals : [ '_.first()', 'getFuncName()', 'prg.addVariable()', 'prg.getAssignment()',
                 'create.FunctionExpression()', 'prg.addAssignment()', 'create.Identifier()', 'addToFunction()',
                 '_.rest()', 'create.Literal()' ] ,
