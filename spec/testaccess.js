@@ -136,7 +136,7 @@ function a() {
 
 }
 
-var code = a.toString();
+var code = handleFirstFunction.toString();
 
 
 var accList = acc.getAccessors(code);
