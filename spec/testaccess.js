@@ -140,4 +140,4 @@ var code = handleFirstFunction.toString();
 
 
 var accList = acc.getAccessors(code);
-console.log(accList.externals);
+console.log(_.pluck(accList.externals,'fullExpr'));
