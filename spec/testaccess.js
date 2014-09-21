@@ -156,8 +156,9 @@ function a() {
 
 }
 
-var code = first.toString();
+var code = a.toString();
 
 
 var accList = acc.getAccessors(code);
-console.log(_.pluck(accList.externals,'fullExpr'));
+//console.log(_.pluck(accList.externals,'fullExpr'), _.pluck(accList.uses,'path'));
+//console.log(_.pluck(accList.uses,'fullExpr'));
