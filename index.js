@@ -3,6 +3,7 @@ var assert = require("assert");
 var types = require("ast-types");
 var h = require("./lib/helpers");
 var extdef = require("./lib/extdef");
+var scopeUtils = require('./lib/scopeutils');
 var n = types.namedTypes;
 
 
@@ -53,7 +54,7 @@ function getExternals(ast){
 exports.getAccessors = function(source){
     var ast = parse(source);
     if(ast){
-        return getExternals(ast);
+        return scopeUtils.getNonLocalsIn(new types.NodePath(ast));
     }
 };
 

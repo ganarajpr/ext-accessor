@@ -160,5 +160,6 @@ var code = a.toString();
 
 
 var accList = acc.getAccessors(code);
+console.log(accList);
 //console.log(_.pluck(accList.externals,'fullExpr'), _.pluck(accList.uses,'path'));
 //console.log(_.pluck(accList.uses,'fullExpr'));

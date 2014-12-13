@@ -9,7 +9,7 @@
   "author": "Ganaraj P R",
   "license": "MIT",
   "dependencies": {
-    "ast-types": "^0.4.9",
+    "ast-types": "^0.6.6",
     "esprima": "^1.2.2",
     "graphlib": "^1.0.0-pre1",
     "jsdom": "^0.2.19",
